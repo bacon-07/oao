@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網頁</title>
+    <style>
+        /* 讓圖片不要太大，方便顯示 */
+        #imageOutput img {
+            max-width: 1000px; /* 圖片最大寬度 */
+            height: auto;     /* 高度自動調整 */
+            display: block;   /* 讓圖片獨立一行 */
+            margin-top: 10px; /* 和文字之間有點間距 */
+        }
+    </style>
+</head>
+<body>
+
+<label for="name">你是誰：</label>
+<select id="name" onchange="showName()">
+  <option value="">.....</option>
+  <option value="QQ">QQ</option>
+   <option value="微笑">微笑</option>
+</select>
+
+<!-- 這裡我們會同時顯示文字和圖片 -->
+<div id="outputContainer">
+    <p id="textOutput"></p>
+    <div id="imageOutput"></div>
+</div>
+
+
+<script>
+function showName() {
+    const name = document.getElementById("name").value;
+    const textOutput = document.getElementById("textOutput");
+    const imageOutput = document.getElementById("imageOutput");
+
+    // 清空上次的內容
+    textOutput.textContent = "";
+    imageOutput.innerHTML = ""; // 清空圖片區塊
+
+    if (name === "") {
+        // 如果沒有選擇，就清空所有內容
+    } else {
+        textOutput.textContent = "Hello " + name;
+
+        // 建立一個圖片元素
+        const img = document.createElement("img");
+
+        if (name === "QQ") {
+            img.src = "random_wallpaper-1.jpg"; // QQ 的圖片路徑
+            img.alt = "";
+        } else if (name === "微笑") {
+            img.src = "random_wallpaper-83543673-a1ca-4890-8388-33f976521626.jpg"; // 微笑 的圖片路徑
+            img.alt = "";
+        }
+
+        // 把圖片加到指定的區塊裡
+        imageOutput.appendChild(img);
+    }
+}
+</script>
+
+</body>
+</html>
